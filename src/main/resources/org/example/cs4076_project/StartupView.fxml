@@ -5,12 +5,23 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
+
+
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.cs4076_project.Controller">
+      fx:controller="org.example.cs4076_project.Controller" style="-fx-background-color: #F4EDED;" >
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label fx:id="lbl"/>
-    <Button text="Click!" onAction="#onBtnClick"/>
+    <Label fx:id="title" text="Home" style="-fx-text-fill: #464D77; -fx-font-weight: bold; -fx-font-size: 45px" />
+
+    <Button fx:id="add" text="Add Class" onAction="#onAdd" minWidth="200" minHeight="50"
+            style="-fx-background-color: #464D77; -fx-text-fill: #F4EDED; -fx-font-size: 14px; -fx-border-radius: 5px;" />
+
+    <Button fx:id="rem" text="Remove Class" onAction="#onRem" minWidth="200" minHeight="50"
+            style="-fx-background-color: #464D77; -fx-text-fill: #F4EDED; -fx-font-size: 14px; -fx-border-radius: 5px;" />
+
+    <Button fx:id="view" text="View Schedule" onAction="#onView" minWidth="200" minHeight="50"
+            style="-fx-background-color: #464D77; -fx-text-fill: #F4EDED; -fx-font-size: 14px; -fx-border-radius: 5px;" />
 </VBox>
+
