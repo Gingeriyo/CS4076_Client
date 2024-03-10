@@ -8,7 +8,12 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.cs4076_project.Controller"
+            fx:controller="org.example.cs4076_project.controller"
             prefHeight="400.0" prefWidth="600.0">
+
+     <!-- when new schedule is created, create new tab to view it? -->
+    <TabPane>
+
+    </TabPane>
 
 </AnchorPane>
