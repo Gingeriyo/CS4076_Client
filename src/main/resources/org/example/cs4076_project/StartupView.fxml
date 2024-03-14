@@ -9,7 +9,7 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       prefHeight="480.0" prefWidth="720.0"
-      fx:controller="org.example.cs4076_project.controller" style="-fx-background-color: #F4EDED;" >
+      fx:controller="org.example.cs4076_project.Controller" style="-fx-background-color: #F4EDED;" >
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>

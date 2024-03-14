@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.cs4076_project.controller"
+            fx:controller="org.example.cs4076_project.Controller"
             prefHeight="480.0" prefWidth="720.0"
             style="-fx-background-color: #F4EDED;">
 

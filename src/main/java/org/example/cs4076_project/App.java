@@ -4,7 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,7 +24,7 @@ public class App extends Application {
             Scene scene = new Scene(root);
             stage.setTitle("Class Scheduler");
             // replace icon
-            Image icon = new Image(Objects.requireNonNull(controller.class.getResource("/kit.png")).toExternalForm(), false);
+            Image icon = new Image(Objects.requireNonNull(Controller.class.getResource("/kit.png")).toExternalForm(), false);
             stage.getIcons().add(icon);
             stage.setResizable(false);
             stage.setMinWidth(minWidth);
@@ -46,7 +48,7 @@ public class App extends Application {
     public Scene addClass() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("addSceneView.fxml"));
 
-         return new Scene(fxmlLoader.load(), minWidth, minHeight);
+        return new Scene(fxmlLoader.load(), minWidth, minHeight);
     }
 
     public Scene removeClass() throws IOException {

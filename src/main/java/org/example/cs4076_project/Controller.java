@@ -1,5 +1,6 @@
     package org.example.cs4076_project;
 
+    import javafx.collections.ObservableList;
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
@@ -8,19 +9,27 @@
     import javafx.scene.Scene;
     import javafx.scene.control.Button;
     import javafx.scene.control.Label;
+    import javafx.scene.control.PopupControl;
+    import javafx.scene.layout.HBox;
+    import javafx.scene.layout.VBox;
+    import javafx.scene.shape.Rectangle;
+    import javafx.stage.Popup;
+    import javafx.stage.PopupWindow;
     import javafx.stage.Stage;
 
     import java.io.IOException;
     import java.util.Objects;
 
-    public class controller {
+    public class Controller {
 
         @FXML
         public Button add;
         public Button rem;
         public Button view;
         public Label title;
+        public Label result;
 
+        TCP tcp = new TCP();
 
         public void switchScene(ActionEvent event, String name) throws IOException {
             Parent root =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource(name + ".fxml")));
@@ -53,10 +62,11 @@
         }
 
         public void onAddClass(ActionEvent event) {
-            // todo
+            result.setText(tcp.send("ADD_ghhg_S205_2024-04-04_9"));
         }
 
         public void onRemClass(ActionEvent event) {
             // todo
         }
+
     }

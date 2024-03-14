@@ -5,9 +5,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.lang.*?>
+
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.cs4076_project.controller"
+            fx:controller="org.example.cs4076_project.Controller"
             prefHeight="480.0" prefWidth="720.0"
             style="-fx-background-color: #F4EDED;">
 
@@ -50,6 +51,7 @@
 
         <Button text="Confirm" onAction="#onAddClass"/>
 
+        <Label fx:id="result"/>
     </VBox>
 
     <HBox alignment="CENTER_LEFT" spacing="20.0">
