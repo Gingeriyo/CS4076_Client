@@ -17,7 +17,7 @@ class TCPTest {
     void initTest() {
         TCP test = new TCP();
         // This test will only return true if the server is online
-        assertTrue(test.init());
+        assertEquals("OK", test.init());
     }
 
     @Test

@@ -29,8 +29,6 @@
         public Label title;
         public Label result;
 
-        TCP tcp = new TCP();
-
         public void switchScene(ActionEvent event, String name) throws IOException {
             Parent root =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource(name + ".fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -62,7 +60,11 @@
         }
 
         public void onAddClass(ActionEvent event) {
-            result.setText(tcp.send("ADD_ghhg_S205_2024-04-04_9"));
+            TCP tcp = new TCP();
+            if (!Objects.equals(tcp.init(), "OK")) {
+                result.setText("Connection to Server could not be established!");
+            }
+            result.setText(tcp.send("ADD_CS4007_S205_2024-03-03_9"));
         }
 
         public void onRemClass(ActionEvent event) {

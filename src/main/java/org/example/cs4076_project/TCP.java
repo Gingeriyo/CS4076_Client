@@ -13,14 +13,13 @@ public class TCP {
     BufferedReader in;
     PrintWriter out;
 
-    public boolean init() {
+    public String init() {
         InetAddress IP;
         try {
             IP = InetAddress.getLocalHost();
         }
         catch(UnknownHostException e) {
-            System.out.println("IP of local machine not found!");
-            return false;
+            return "IP of local machine not found!";
         }
 
         try {
@@ -30,10 +29,9 @@ public class TCP {
             out = new PrintWriter(link.getOutputStream(),true);
         }
         catch(IOException e) {
-            System.out.println("Unable to establish socket to server!");
-            return false;
+            return "Unable to establish socket to server!";
         }
-        return true;
+        return "OK";
     }
 
     public String send(String message) {
