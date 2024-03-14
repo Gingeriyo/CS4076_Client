@@ -1,33 +1,38 @@
 package org.example.cs4076_project;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class App extends Application {
     private final int minWidth = 720;
     private final int minHeight = 480;
-    public Stage stage;
 
     // setting primary stage
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        stage = primaryStage;
-        primaryStage.setTitle("Class Scheduler");
-        primaryStage.setResizable(false);
-        primaryStage.setScene(startup());
-        primaryStage.show();
+    public void start(Stage stage) {
+        try{
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StartupView.fxml")));
+            Scene scene = new Scene(root);
+            stage.setTitle("Class Scheduler");
+            // replace icon
+            Image icon = new Image(Objects.requireNonNull(controller.class.getResource("/kit.png")).toExternalForm(), false);
+            stage.getIcons().add(icon);
+            stage.setResizable(false);
+            stage.setMinWidth(minWidth);
+            stage.setMinHeight(minHeight);
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
-
-    //stage.setScene(facultyLogin())
 
     // Add class
     // Remove class
@@ -39,9 +44,9 @@ public class App extends Application {
     }
 
     public Scene addClass() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("addScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("addSceneView.fxml"));
 
-        return new Scene(fxmlLoader.load(), minWidth, minHeight);
+         return new Scene(fxmlLoader.load(), minWidth, minHeight);
     }
 
     public Scene removeClass() throws IOException {
@@ -59,5 +64,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }
