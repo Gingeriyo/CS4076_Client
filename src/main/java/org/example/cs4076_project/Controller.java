@@ -7,9 +7,7 @@
     import javafx.scene.Node;
     import javafx.scene.Parent;
     import javafx.scene.Scene;
-    import javafx.scene.control.Button;
-    import javafx.scene.control.Label;
-    import javafx.scene.control.PopupControl;
+    import javafx.scene.control.*;
     import javafx.scene.layout.HBox;
     import javafx.scene.layout.VBox;
     import javafx.scene.shape.Rectangle;
@@ -28,6 +26,10 @@
         public Button view;
         public Label title;
         public Label result;
+        public TextField module;
+        public DatePicker date;
+        public TextField room;
+        public ComboBox time;
 
         public void switchScene(ActionEvent event, String name) throws IOException {
             Parent root =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource(name + ".fxml")));
@@ -61,14 +63,44 @@
 
         public void onAddClass(ActionEvent event) {
             TCP tcp = new TCP();
-            if (!Objects.equals(tcp.init(), "OK")) {
-                result.setText("Connection to Server could not be established!");
+            String m = tcp.init();
+            String input = module.getText() + "_" + room.getText() + "_" + date.getValue().toString() + "_" + time.getValue();
+            if (!Objects.equals(m, "OK")) {
+                result.setText(m);
+            } else {
+                String tmp = tcp.send("ADD_" + input);
+                switch(tmp) {
+                    case "ADD_CLASS_SUCCESS":
+                        result.setText("Successfully Added Class!");
+                        break;
+                    case "ADD_CLASS_FAIL":
+                        result.setText("There is already a class with that date, room and time!");
+                        break;
+                    default:
+                        result.setText(tmp);
+                }
             }
-            result.setText(tcp.send("ADD_CS4007_S205_2024-03-03_9"));
         }
 
         public void onRemClass(ActionEvent event) {
-            // todo
+            TCP tcp = new TCP();
+            String m = tcp.init();
+            String input = module.getText() + "_" + room.getText() + "_" + date.getValue().toString() + "_" + time.getValue();
+            if (!Objects.equals(m, "OK")) {
+                result.setText(m);
+            } else {
+                String tmp = tcp.send("REMOVE_" + input);
+                switch(tmp) {
+                    case "REMOVE_CLASS_SUCCESS":
+                        result.setText("Successfully Removed Class!");
+                        break;
+                    case "REMOVE_CLASS_FAIL":
+                        result.setText("That class does not exist!");
+                        break;
+                    default:
+                        result.setText(tmp);
+                }
+            }
         }
 
     }
