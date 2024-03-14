@@ -9,29 +9,31 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class TCP {
-    private static int PORT = 9999;
-    private static InetAddress IP;
     Socket link = null;
     BufferedReader in;
     PrintWriter out;
 
-    public TCP() {
+    public boolean init() {
+        InetAddress IP;
         try {
             IP = InetAddress.getLocalHost();
         }
         catch(UnknownHostException e) {
             System.out.println("IP of local machine not found!");
+            return false;
         }
 
         try {
-            link = new Socket(IP,PORT);
+            int PORT = 9999;
+            link = new Socket(IP, PORT);
             in = new BufferedReader(new InputStreamReader(link.getInputStream()));
             out = new PrintWriter(link.getOutputStream(),true);
         }
-        catch(IOException e)
-        {
+        catch(IOException e) {
             System.out.println("Unable to establish socket to server!");
+            return false;
         }
+        return true;
     }
 
     public String send(String message) {

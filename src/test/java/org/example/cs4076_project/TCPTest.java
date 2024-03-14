@@ -10,6 +10,8 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TCPTest {
+    // For all these tests to pass, the server must be restarted after
+    // every test (assuming it does not have permanent storage)
     @Test
     @DisplayName("Initialise TCP Client")
     void initTest() {
@@ -31,7 +33,15 @@ class TCPTest {
     void sendAddSuccess() {
         TCP test = new TCP();
         test.init();
-        assertEquals("ADD_CLASS_SUCCESS", test.send("ADD_CS2004_S205_2024-03-14_10"));
+        assertEquals("ADD_CLASS_SUCCESS", test.send("ADD_CS2004_S205_2024-03-16_10"));
+    }
+
+    @Test
+    @DisplayName("Send Add Success 2")
+    void sendAddSuccessTwo() {
+        TCP test = new TCP();
+        test.init();
+        assertEquals("ADD_CLASS_SUCCESS", test.send("ADD_TEMU-UNIVERSITY_KBG_2024-03-16_11"));
     }
 
     @Test
