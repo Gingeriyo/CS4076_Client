@@ -97,14 +97,12 @@
             } else {
                 String input = tcp.send("VIEW_" + date2.getValue().toString());
                 try {
-                    HashMap<Integer, ArrayList<String[]>> h = ViewCalc.in(input);
+                    scheduleField.setText(ViewCalc.in(input));
                 }
                 catch (Exception e) {
                     result.setText(input);
                 }
             }
-
-            scheduleField.setText("");
         }
 
         public void onClassSched(ActionEvent event) {

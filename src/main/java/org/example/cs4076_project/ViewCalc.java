@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class ViewCalc {
 
-    public static HashMap<Integer, ArrayList<String[]>> in(String in) {
+    public static String in(String in) {
 
         HashMap<Integer, ArrayList<String[]>> h = new HashMap<>();
 
@@ -35,6 +35,22 @@ public class ViewCalc {
             }
         }
 
-        return h;
+        String schedule = "";
+        boolean add_0 = false;
+        for (int name = 9; name <= 17; name++) {
+            if (!add_0) {
+                schedule += "0";
+            }
+            schedule += name + ":00\n";
+            add_0 = true;
+            String temp = "";
+            for (int i = 0; i < h.get(name).size(); i++) {
+                String str = String.format("%-20s", h.get(name).get(i)[0]);
+                temp += "     NAME: " + str + "ROOM: " + h.get(name).get(i)[1] + "\n";
+            }
+            schedule += temp + "\n";
+        }
+
+        return schedule;
     }
 }
