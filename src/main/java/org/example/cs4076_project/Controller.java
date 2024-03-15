@@ -68,17 +68,7 @@
             if (!Objects.equals(m, "OK")) {
                 result.setText(m);
             } else {
-                String tmp = tcp.send("ADD_" + input);
-                switch(tmp) {
-                    case "ADD_CLASS_SUCCESS":
-                        result.setText("Successfully Added Class!");
-                        break;
-                    case "ADD_CLASS_FAIL":
-                        result.setText("There is already a class with that date, room and time!");
-                        break;
-                    default:
-                        result.setText(tmp);
-                }
+                result.setText(tcp.send("ADD_" + input));
             }
         }
 
