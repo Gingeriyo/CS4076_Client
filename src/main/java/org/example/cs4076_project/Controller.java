@@ -106,7 +106,19 @@
         }
 
         public void onClassSched(ActionEvent event) {
-            //todo
+            TCP tcp = new TCP();
+            String m = tcp.init();
+            if (!Objects.equals(m, "OK")) {
+                result.setText(m);
+            } else {
+                String input = tcp.send("VIEWCLASS_" + date2.getValue().toString() + "_" + module.getText());
+                try {
+                    scheduleField.setText(ViewCalc.in(input));
+                }
+                catch (Exception e) {
+                    result.setText(input);
+                }
+            }
         }
 
         public void onStop(ActionEvent event) {

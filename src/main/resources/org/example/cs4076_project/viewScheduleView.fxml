@@ -35,7 +35,7 @@
 
                 <VBox minHeight="15.0">
                     <DatePicker fx:id="date2" promptText="Select Date"/>
-                    <TextField promptText="Name of Module"/>
+                    <TextField fx:id="module" promptText="Name of Module"/>
                 </VBox>
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="5.0" prefWidth="20">
