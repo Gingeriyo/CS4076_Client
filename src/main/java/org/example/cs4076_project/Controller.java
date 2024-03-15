@@ -8,28 +8,25 @@
     import javafx.scene.Parent;
     import javafx.scene.Scene;
     import javafx.scene.control.*;
-    import javafx.scene.layout.HBox;
-    import javafx.scene.layout.VBox;
-    import javafx.scene.shape.Rectangle;
-    import javafx.stage.Popup;
-    import javafx.stage.PopupWindow;
     import javafx.stage.Stage;
 
     import java.io.IOException;
     import java.util.Objects;
 
+
     public class Controller {
 
         @FXML
         public Button add;
-        public Button rem;
-        public Button view;
         public Label title;
         public Label result;
         public TextField module;
         public DatePicker date;
         public TextField room;
         public ComboBox time;
+        public TabPane tabPane;
+
+        public Controller() throws IOException {}
 
         public void switchScene(ActionEvent event, String name) throws IOException {
             Parent root =  FXMLLoader.load(Objects.requireNonNull(getClass().getResource(name + ".fxml")));
@@ -45,13 +42,10 @@
         }
 
         @FXML
-        protected void onAdd(ActionEvent event) throws IOException {
-            switchScene(event,"addSceneView");
+        protected void onManage(ActionEvent event) throws IOException {
+            switchScene(event, "manageClassesView");
         }
-        @FXML
-        protected void onRem(ActionEvent event) throws IOException {
-            switchScene(event, "removeClassView");
-        }
+
         @FXML
         protected void onView(ActionEvent event) throws IOException {
             switchScene(event, "viewScheduleView");
@@ -93,4 +87,25 @@
             }
         }
 
+        public void addTab(ActionEvent event) throws IOException {
+            int numTabs = tabPane.getTabs().size();
+            if(numTabs == 0){
+                Tab schedTab = new Tab("Schedule Date");
+                schedTab.setClosable(false);
+                tabPane.getTabs().add(schedTab);
+            }
+            Tab tab = new Tab("Schedule "+(numTabs+1));
+            tabPane.getTabs().add(tab);
+        }
+
+        public void newSchedule(ActionEvent event) throws IOException {
+            addTab(event);
+        }
+
+        public void onNextDay(ActionEvent event) {
+        }
+
+        public void onExit(ActionEvent event) {
+            //todo
+        }
     }

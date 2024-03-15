@@ -5,15 +5,48 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.cs4076_project.Controller"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="480.0" prefWidth="720.0"
+            style="-fx-background-color: #F4EDED;">
 
-     <!-- when new schedule is created, create new tab to view it? -->
-    <TabPane>
+    <VBox alignment="CENTER" spacing="20.0" prefHeight="480.0" prefWidth="720.0">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        </padding>
 
-    </TabPane>
+        <Label fx:id="title" text="View Schedule"
+               style="-fx-text-fill: #464D77; -fx-font-weight: bold; -fx-font-size: 45px"/>
+
+        <HBox alignment="CENTER" spacing="10.0" style="-fx-font-size: 12px">
+            <VBox spacing="10.0">
+                <Label text="Date:"/>
+            </VBox>
+
+            <VBox minHeight="15.0">
+                <DatePicker fx:id="date" promptText="Select Date"/>
+            </VBox>
+        </HBox>
+        <HBox alignment="CENTER" spacing="5.0" prefWidth="20">
+            <Button text="Generate Schedule" onAction="#newSchedule" />
+            <Button text="Next Day" onAction="#onNextDay" alignment="CENTER_RIGHT"/>
+        </HBox>
+
+    </VBox>
+
+    <TabPane fx:id="tabPane" />
+
+    <HBox alignment="CENTER_LEFT" spacing="20.0">
+        <padding>
+            <Insets top="40.0" left="10.0" />
+        </padding>
+        <Button text="Home" onAction="#onHome"/>
+    </HBox>
 
 </AnchorPane>
