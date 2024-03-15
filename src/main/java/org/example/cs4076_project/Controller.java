@@ -26,6 +26,7 @@
         public ComboBox time;
         public TabPane tabPane;
         public AnchorPane tpane;
+        public AnchorPane tbPane;
 
         public Controller() throws IOException {}
 
@@ -78,30 +79,9 @@
             }
         }
 
-        public void addTab(ActionEvent event) throws IOException {
-            int numTabs = tabPane.getTabs().size();
-            if(numTabs == 0){
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("viewScheduleView.fxml"));
-                Parent root = loader.load();
-                Tab schedTab = new Tab("Schedule Date");
-                schedTab.setContent(root);
-                schedTab.setClosable(false);
-                tabPane.getSelectionModel().select(schedTab);
-                tabPane.requestLayout();
-                tabPane.getTabs().add(schedTab);
-            }
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("tabView.fxml"));
-                Parent root = loader.load();
-                Tab newTab = new Tab("Schedule " + (numTabs + 1));
-                newTab.setContent(root);
-                tabPane.getSelectionModel().select(newTab);
-                tabPane.requestLayout();
-                tabPane.layout();
-                tabPane.getTabs().add(newTab);
-        }
 
         public void newSchedule(ActionEvent event) throws IOException {
-            addTab(event);
+
         }
 
         public void onNextDay(ActionEvent event) {
