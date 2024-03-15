@@ -1,5 +1,7 @@
     package org.example.cs4076_project;
 
+    import javafx.beans.property.SimpleStringProperty;
+    import javafx.collections.FXCollections;
     import javafx.collections.ObservableList;
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
@@ -8,10 +10,15 @@
     import javafx.scene.Parent;
     import javafx.scene.Scene;
     import javafx.scene.control.*;
+    import javafx.scene.control.cell.PropertyValueFactory;
     import javafx.scene.layout.AnchorPane;
+    import javafx.scene.layout.GridPane;
     import javafx.stage.Stage;
 
     import java.io.IOException;
+    import java.time.LocalDate;
+    import java.util.ArrayList;
+    import java.util.HashMap;
     import java.util.Objects;
 
     public class Controller {
@@ -23,10 +30,12 @@
         public TextField module;
         public DatePicker date;
         public TextField room;
-        public ComboBox time;
-        public TabPane tabPane;
-        public AnchorPane tpane;
-        public AnchorPane tbPane;
+        public ComboBox<String> time;
+        public DatePicker date2;
+        public TextArea scheduleField;
+
+        private javafx.collections.FXCollections FXCollections;
+
 
         public Controller() throws IOException {}
 
@@ -80,11 +89,25 @@
         }
 
 
-        public void newSchedule(ActionEvent event) throws IOException {
+        public void genSchedule(ActionEvent event) throws IOException {
+            TCP tcp = new TCP();
+            String m = tcp.init();
+            if (!Objects.equals(m, "OK")) {
+                result.setText(m);
+            } else {
+                String input = tcp.send("VIEW_" + date2.getValue().toString());
+                try {
+                    HashMap<Integer, ArrayList<String[]>> h = ViewCalc.in(input);
+                }
+                catch (Exception e) {
+                    result.setText(input);
+                }
+            }
 
+            scheduleField.setText("");
         }
 
-        public void onNextDay(ActionEvent event) {
+        public void onClassSched(ActionEvent event) {
             //todo
         }
 
@@ -105,4 +128,5 @@
                 }
             }
         }
+
     }

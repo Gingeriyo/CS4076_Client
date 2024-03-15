@@ -55,8 +55,6 @@
         </HBox>
 
         <Label fx:id="result"/>
-
-        <Button alignment="CENTER" text="Generate Schedule" onAction="#newSchedule"/>
     </VBox>
 
     <HBox alignment="CENTER_LEFT" spacing="20.0">
