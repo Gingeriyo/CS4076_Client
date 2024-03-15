@@ -73,17 +73,7 @@
             if (!Objects.equals(m, "OK")) {
                 result.setText(m);
             } else {
-                String tmp = tcp.send("REMOVE_" + input);
-                switch(tmp) {
-                    case "REMOVE_CLASS_SUCCESS":
-                        result.setText("Successfully Removed Class!");
-                        break;
-                    case "REMOVE_CLASS_FAIL":
-                        result.setText("That class does not exist!");
-                        break;
-                    default:
-                        result.setText(tmp);
-                }
+                result.setText(tcp.send("REMOVE_" + input));
             }
         }
 
@@ -110,6 +100,20 @@
         }
 
         public void onStop(ActionEvent event) {
-
+            TCP tcp = new TCP();
+            String m = tcp.init();
+            if (!Objects.equals(m, "OK")) {
+                System.out.println("Could not connect to server! Exiting...");
+                System.exit(1);
+            } else {
+                if (Objects.equals(tcp.send("STOP"), "TERMINATE")) {
+                    System.out.println("Server has been closed, exiting...");
+                    System.exit(1);
+                }
+                else {
+                    System.out.println("Incorrect response from server! Exiting...");
+                    System.exit(1);
+                }
+            }
         }
     }
