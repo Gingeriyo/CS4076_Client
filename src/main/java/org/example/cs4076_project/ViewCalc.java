@@ -21,6 +21,9 @@ public class ViewCalc {
         for (int i = 9; i <= 17; i++) {
             // Initialise the lists inside the hashmap.
             h.put(i, new ArrayList<String[]>());
+        }
+
+        for (int i = 9; i <= 17; i++) {
             for (String[] strings : result) {
                 // Check the time the class is on.
                 int time_int = Integer.parseInt(strings[0]);

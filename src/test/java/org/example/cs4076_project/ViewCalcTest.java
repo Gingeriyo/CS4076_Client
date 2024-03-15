@@ -15,7 +15,7 @@ public class ViewCalcTest {
     void initTest() {
         String view = "9_CLASS_SCHUMAN~9_ANOTHER CLASS_kemmy~11_poo class._kemmy";
         HashMap<Integer, ArrayList<String[]>> h = ViewCalc.in(view);
-        for (int name : h.keySet()) {
+        for (int name = 9; name <= 17; name++) {
             System.out.println(name + ":");
             String temp = "";
             for (int i = 0; i < h.get(name).size(); i++) {
