@@ -89,13 +89,16 @@
 
         public void addTab(ActionEvent event) throws IOException {
             int numTabs = tabPane.getTabs().size();
+            Tab tabPage;
+            Tab schedTab;
             if(numTabs == 0){
-                Tab schedTab = new Tab("Schedule Date");
+                schedTab = new Tab("Schedule Date");
                 schedTab.setClosable(false);
                 tabPane.getTabs().add(schedTab);
             }
-            Tab tab = new Tab("Schedule "+(numTabs+1));
-            tabPane.getTabs().add(tab);
+            tabPage = new Tab("Schedule " + (numTabs + 1));
+            tabPage.setClosable(true);
+            tabPane.getTabs().add(tabPage);
         }
 
         public void newSchedule(ActionEvent event) throws IOException {
@@ -103,9 +106,10 @@
         }
 
         public void onNextDay(ActionEvent event) {
+            //todo
         }
 
-        public void onExit(ActionEvent event) {
-            //todo
+        public void onStop(ActionEvent event) {
+
         }
     }

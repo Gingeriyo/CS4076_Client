@@ -22,7 +22,7 @@
     <Button text="View Schedule" onAction="#onView" minWidth="200" minHeight="50"
             style="-fx-background-color: #464D77; -fx-text-fill: #F4EDED; -fx-font-size: 14px; -fx-border-radius: 5px;" />
 
-    <Button text="Exit" onAction="#onExit" minWidth="200" minHeight="50"
+    <Button text="Stop" onAction="#onStop" minWidth="200" minHeight="50"
             style="-fx-background-color: #464D77; -fx-text-fill: #F4EDED; -fx-font-size: 14px; -fx-border-radius: 5px;" />
 </VBox>
 
