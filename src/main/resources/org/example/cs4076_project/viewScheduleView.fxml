@@ -25,7 +25,7 @@
             </padding>
 
             <Label fx:id="title" text="View Schedule"
-                   style="-fx-text-fill: #464D77; -fx-font-weight: bold; -fx-font-size: 35px"/>
+                   style="-fx-text-fill: #464D77; -fx-font-weight: bold; -fx-font-size: 30px"/>
 
             <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-font-size: 12px">
                 <VBox spacing="10.0">
@@ -39,8 +39,8 @@
                 </VBox>
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="5.0" prefWidth="20">
-                <Button text="Generate Schedule" onAction="#genSchedule" />
-                <Button text="View Class Schedule" onAction="#onClassSched" alignment="CENTER_RIGHT"/>
+                <Button text="Day Schedule" onAction="#genSchedule" />
+                <Button text="Module Schedule" onAction="#onClassSched" alignment="CENTER_RIGHT"/>
                 <Label fx:id="result"/>
             </HBox>
         </VBox>
@@ -49,7 +49,7 @@
 
     <right>
         <VBox>
-            <TextArea fx:id="scheduleField" editable="false" minWidth="200" minHeight="200"/>
+            <TextArea fx:id="scheduleField" editable="false" maxWidth="400" minWidth="400" maxHeight="400" minHeight="400"/>
         </VBox>
     </right>
 
